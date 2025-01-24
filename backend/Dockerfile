@@ -16,3 +16,4 @@ EXPOSE 2000 8080 8081
 COPY . .
 
 CMD ["node", "server.js", "curl", "mongodb-app:27017"]
+LABEl org.opencontainers.image.source https://github.com/AAJB13/SGD
