@@ -33,7 +33,7 @@ spec:
         - name: github-cr
       containers:
         - name: sg-decoding-api
-          image: "ghcr.io/ntuspeechlab/sgdecoding-backend:v1.0."
+          image: "ghcr.io/aajb13/sgd:2.1"
           imagePullPolicy: "Always"
           env:
             - name: PORT
@@ -134,7 +134,7 @@ spec:
         - name: github-cr
       containers:
         - name: sg-decoding-web
-          image: "ghcr.io/ntuspeechlab/sgdecoding-frontend:v1.0"
+          image: "ghcr.io/aajb13/sgd:1.1"
           imagePullPolicy: "Always"
           env:
             - name: FAST_REFRESH
