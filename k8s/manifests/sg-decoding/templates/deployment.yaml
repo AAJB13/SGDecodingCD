@@ -138,7 +138,7 @@ spec:
           imagePullPolicy: "Always"
           env:
             - name: FAST_REFRESH
-              value: false
+              value: "false"
             - name: REACT_APP_API
               value: https://sgdecoding-api.speechlab.sg
             - name: REACT_APP_SOCKETAPI
