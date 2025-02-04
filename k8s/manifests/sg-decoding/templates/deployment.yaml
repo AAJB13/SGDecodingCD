@@ -141,6 +141,8 @@ spec:
           env:
             - name: FAST_REFRESH
               value: "false"
+            - name: SAMPLEKEY
+              value: sampleval
             - name: REACT_APP_API
               value: https://sgdecoding-api.speechlab.sg
             - name: REACT_APP_SOCKETAPI
