@@ -58,6 +58,8 @@ spec:
               value: randomepwdhere
             - name: DB_DATABASE
               value: sgdecoding
+            - name: SOMEKEY
+              value: somevalue
             - name: DB_CONNECTION_STRING
               value: mongodb://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST)/$(DB_DATABASE)?authSource=admin
           ports:
