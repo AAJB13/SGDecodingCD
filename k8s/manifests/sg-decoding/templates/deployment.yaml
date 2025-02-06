@@ -33,7 +33,7 @@ spec:
         - name: github-cr
       containers:
         - name: sg-decoding-api
-          image: "ghcr.io/"ghcr.io/aajb13/sgd-backend:55"
+          image: "ghcr.io/aajb13/sgd-backend:55"
           imagePullPolicy: "Always"
           env:
             - name: PORT
@@ -136,7 +136,7 @@ spec:
         - name: github-cr
       containers:
         - name: sg-decoding-web
-          image: "ghcr.io/"ghcr.io/aajb13/sgd-frontend:55"
+          image: "ghcr.io/aajb13/sgd-frontend:55"
           imagePullPolicy: "Always"
           env:
             - name: FAST_REFRESH
