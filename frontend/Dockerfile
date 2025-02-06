@@ -32,4 +32,4 @@ EXPOSE 3000
 
 CMD ["nginx", "-g", "daemon off;"]
 
-LABEl org.opencontainers.image.source https://github.com/AAJB13/SGD
+LABEL org.opencontainers.image.source https://github.com/AAJB13/SGD
