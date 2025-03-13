@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd
+  namespace: monitoring  # Namespace where Prometheus Operator is installed
+  labels:
+    release: prometheus-operator
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-server  # Match the Argo CD server service
+  namespaceSelector:
+    matchNames:
+      - argocd  # Namespace where Argo CD is installed
+  endpoints:
+    - port: metrics  # Port name in the Argo CD service
+      interval: 30s
