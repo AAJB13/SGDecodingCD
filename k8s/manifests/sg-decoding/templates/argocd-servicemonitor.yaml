@@ -4,7 +4,7 @@ metadata:
   name: argocd-metrics
   namespace: monitoring  # Namespace where Prometheus is installed
   labels:
-    release: prometheus  # Match the Prometheus instance
+    release: prometheus-operator  # Match the Prometheus instance
 spec:
   namespaceSelector:
     matchNames:
