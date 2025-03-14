@@ -13,5 +13,7 @@ spec:
     matchNames:
       - argocd  # Namespace where Argo CD is installed
   endpoints:
-    - port: metrics  # Port name in the Argo CD service
-      interval: 30s
+  - port: metrics
+    scheme: https
+    tlsConfig:
+      insecureSkipVerify: true
