@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: sgdecoding
-  namespace: default
+  name: ArgoRollOut
+  namespace: sgdecoding
 spec:
   replicas: 5
   strategy:
