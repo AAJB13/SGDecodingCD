@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: sgdecoding
-        image: "ghcr.io/aajb13/sgd-backend:163"
+        image: "ghcr.io/aajb13/sgd-frontend:163"
         imagePullPolicy: "Always"
         ports:
         - containerPort: 8080  # Replace with the actual port your app listens on
