@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: sgdecoding-web
+  namespace: sgdecoding
+spec:
+  replicas: 3  # Total number of pods
+  strategy:
+    canary:
+      steps:
+        - setWeight: 10  # 10% of traffic to canary
+        - pause: {}      # Pause indefinitely until manually approved
+        - setWeight: 50  # 50% of traffic to canary
+        - pause: { duration: 1h }  # Pause for 1 hour
+        - setWeight: 100 # Full rollout
+      trafficRouting:
+        nginx:
+          stableIngress: sgdecoding-web-ingress  # Name of your ingress
+  selector:
+    matchLabels:
+      app: sgdecoding-web
+  template:
+    metadata:
+      labels:
+        app: sgdecoding-web
+    spec:
+      containers:
+        - name: sgdecoding-web
+          image: ghcr.io/aajb13/sgd-frontend:173
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REACT_APP_API
+              value: https://sgdecoding-api.speechlab.sg
+            # Add other environment variables as needed
