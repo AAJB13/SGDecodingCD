@@ -68,7 +68,7 @@ spec:
               name: http
             - containerPort: 8080
               protocol: TCP
-              name: ws
+              name: metrics
             - containerPort: 8081
               protocol: TCP
               name: http1
@@ -153,6 +153,9 @@ spec:
             - containerPort: 3000
               protocol: TCP
               name: http
+            - containerPort: 8080  # Add this port for metrics
+              protocol: TCP
+              name: metrics
           readinessProbe:
             httpGet:
                 path: /
