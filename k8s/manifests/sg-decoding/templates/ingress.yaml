@@ -1,5 +1,4 @@
 ---
-# Source: sg-decoding/templates/ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,7 +6,9 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
-  name: sg-decoding-api
+    nginx.ingress.kubernetes.io/canary: "true"  # Enable canary
+    nginx.ingress.kubernetes.io/canary-weight: "10"  # Send 10% of traffic to canary
+  name: sg-decoding-api-canary
   namespace: sgdecoding
 spec:
   ingressClassName: "nginx"
@@ -15,12 +16,11 @@ spec:
     - host: sgdecoding-api.speechlab.sg
       http:
         paths:
-
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: sg-decoding-api
+                name: sg-decoding-api-canary  # Canary service
                 port:
                   number: 2000
   tls:
