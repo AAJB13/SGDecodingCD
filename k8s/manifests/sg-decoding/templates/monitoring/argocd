@@ -1,0 +1,53 @@
+---
+### ServiceMonitor for Argo CD API Server (port 8083)
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd-server
+  namespace: argocd
+  labels:
+    release: prometheus  # Must match your Prometheus Operator's selector
+spec:
+  selector:
+    matchLabels:
+      # Match the labels of the "argocd-server-metrics" service
+      app.kubernetes.io/name: argocd-server
+  endpoints:
+  - port: metrics  # Matches the port name "metrics" in the service (port 8083)
+    path: /metrics
+
+---
+### ServiceMonitor for Argo CD Repo Server (port 8084)
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd-repo-server
+  namespace: argocd
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      # Match the labels of the "argocd-repo-server" service
+      app.kubernetes.io/name: argocd-repo-server
+  endpoints:
+  - port: metrics  # Matches the port name "metrics" in the service (port 8084)
+    path: /metrics
+
+---
+### ServiceMonitor for Argo CD Application Controller (port 8082)
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd-application-controller
+  namespace: argocd
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      # Match the labels of the "argocd-metrics" service (port 8082)
+      app.kubernetes.io/name: argocd-application-controller
+  endpoints:
+  - port: metrics  # Matches the port name "metrics" in the service (port 8082)
+    path: /metrics
