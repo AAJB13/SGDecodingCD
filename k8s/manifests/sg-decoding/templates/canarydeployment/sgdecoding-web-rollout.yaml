@@ -32,4 +32,4 @@ spec:
           env:
             - name: REACT_APP_API
               value: https://sgdecoding-api.speechlab.sg
-            # Add other environment variables as needed
+            
