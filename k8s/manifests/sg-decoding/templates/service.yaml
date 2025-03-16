@@ -67,10 +67,6 @@ spec:
       targetPort: 2000
       protocol: TCP
       name: http
-    - port: 8080  # Add this port for metrics
-      targetPort: 8080
-      protocol: TCP
-      name: metrics
   selector:
     component: api
     app.kubernetes.io/name: sg-decoding
