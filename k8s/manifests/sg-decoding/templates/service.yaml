@@ -18,10 +18,9 @@ spec:
       targetPort: 3000
       protocol: TCP
       name: http
-    - port: 8080  # Add this port for metrics
+    - protocol: TCP
+      port: 80
       targetPort: 8080
-      protocol: TCP
-      name: metrics
   selector:
     component: web
     app.kubernetes.io/name: sg-decoding
@@ -47,10 +46,9 @@ spec:
       targetPort: 3000
       protocol: TCP
       name: http
-    - port: 8080  # Add this port for metrics
+    - protocol: TCP
+      port: 80
       targetPort: 8080
-      protocol: TCP
-      name: metrics
   selector:
     component: web
     app.kubernetes.io/name: sg-decoding
