@@ -36,8 +36,6 @@ spec:
           image: "ghcr.io/aajb13/sgd-backend:173"
           imagePullPolicy: "Always"
           env:
-            - name: API_PORT  # Add this environment variable for the API port
-              value: "2000"
             - name: PORT
               value: "3000"
             - name: PROXY_PORT
