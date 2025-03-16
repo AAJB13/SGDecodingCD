@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: sg-decoding-web  # Match the service labels
+      app: rollout-bluegreen-active  # Match the service labels
   endpoints:
     - port: metrics  # Port name in the service
       path: /metrics  # Path to metrics endpoint
