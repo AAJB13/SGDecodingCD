@@ -20,6 +20,3 @@ spec:
     - port: http  # Matches the port name in your service
       interval: 30s  # Scrape interval
       path: /metrics  # Default metrics endpoint, adjust if your app uses a different path
-    - port: rollout-bluegreen  # Matches the port name in your service
-      interval: 30s  # Scrape interval
-      path: /metrics  # Default metrics endpoint, adjust if your app uses a different path
