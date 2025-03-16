@@ -21,7 +21,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-      name: http
+      name: rollout-bluegreen
   selector:
     component: web
     app.kubernetes.io/name: sg-decoding
@@ -50,7 +50,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-      name: http
+      name: rollout-bluegreen
   selector:
     component: web
     app.kubernetes.io/name: sg-decoding
