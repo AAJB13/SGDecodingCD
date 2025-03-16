@@ -61,7 +61,7 @@ spec:
             - name: SOMEKEY
               value: somevalue
             - name: DB_CONNECTION_STRING
-              value: mongodb://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST)/$(DB_DATABASE)?authSource=admin
+              value: mongodb://AAJB13:znLvP9TLQNFht3Cl@<host1>:27017,<host2>:27017,<host3>:27017/SGDecoding?retryWrites=true&w=majority&appName=SGDecoding
           ports:
             - containerPort: 2000
               protocol: TCP
