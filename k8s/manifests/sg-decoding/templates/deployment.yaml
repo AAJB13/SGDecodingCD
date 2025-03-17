@@ -37,7 +37,7 @@ spec:
           imagePullPolicy: "Always"
           env:
             - name: PORT
-              value: "2000"
+              value: "3000"
             - name: PROXY_PORT
               value: "8080"
             - name: QUILLJS_PORT
