@@ -51,7 +51,7 @@ spec:
             - name: OFFLINE_TRANSCRIBE_QUOTA
               value: "60"
             - name: DB_HOST
-              value: "sgdecoding.goiq3.mongodb.net"
+              value: "sgdecoding-shard-00-00.goiq3.mongodb.net:27017,sgdecoding-shard-00-01.goiq3.mongodb.net:27017,sgdecoding-shard-00-02.goiq3.mongodb.net:27017/"
             - name: DB_USER
               value: SGDecoding
             - name: DB_PASSWORD
