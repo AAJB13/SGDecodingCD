@@ -53,9 +53,9 @@ spec:
             - name: DB_HOST
               value: ""
             - name: DB_USER
-              value: AAJB13
+              value: SGDecoding
             - name: DB_PASSWORD
-              value: znLvP9TLQNFht3Cl
+              value: t1LLA3fSxEfQrllE
             - name: DB_DATABASE
               value: SGDecoding
             - name: SOMEKEY
