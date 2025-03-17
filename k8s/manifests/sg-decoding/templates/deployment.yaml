@@ -1,9 +1,9 @@
 ---
 # Source: sg-decoding/templates/deployment.yaml 1
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
-  name: sg-decoding-api
+  name: sg-decoding-api-canary
   namespace: sgdecoding
   labels:
     helm.sh/chart: sg-decoding-1.0.0
@@ -16,7 +16,19 @@ metadata:
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
 spec:
-  replicas: 1
+  replicas: 5
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause: {duration: 10}
+      - setWeight: 60
+      - pause: {duration: 10}
+      - setWeight: 80
+      - pause: {duration: 10}
+      - setWeight: 100
   selector:
     matchLabels:
       component: api
