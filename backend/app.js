@@ -46,6 +46,10 @@ app.get("/users", async (request, response) => {
   }
 });
 
+// Health check endpoint
+app.get('/healthz', (req, res) => {
+  res.status(200).send('OK');
+});
 
 app.get("/files/:id/download", async (req, res) => {
 
