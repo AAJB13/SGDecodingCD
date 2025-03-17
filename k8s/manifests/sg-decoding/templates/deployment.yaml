@@ -61,7 +61,7 @@ spec:
             - name: SOMEKEY
               value: somevalue
             - name: DB_CONNECTION_STRING
-              value: mongodb://<DB_USER>:<DB_PASSWORD>@sgdecoding-shard-00-00.goiq3.mongodb.net:27017,sgdecoding-shard-00-01.goiq3.mongodb.net:27017,sgdecoding-shard-00-02.goiq3.mongodb.net:27017/?ssl=true&replicaSet=atlas-jzyeis-shard-0&authSource=admin&retryWrites=true&w=majority&appName=SGDecoding
+              value: mongodb+srv://AAJB13:znLvP9TLQNFht3Cl@sgdecoding.goiq3.mongodb.net/?retryWrites=true&w=majority&appName=SGDecoding
               # mongodb://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST)/$(DB_DATABASE)?authSource=admin
               # mongodb+srv://AAJB13:znLvP9TLQNFht3Cl@sgdecoding.goiq3.mongodb.net/?retryWrites=true&w=majority&appName=SGDecoding
           ports:
