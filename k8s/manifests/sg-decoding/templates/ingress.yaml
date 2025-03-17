@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/canary: "true"  # Enable canary
     nginx.ingress.kubernetes.io/canary-weight: "10"  # Send 10% of traffic to canary
-  name: sg-decoding-api-canary
+  name: sg-decoding-api
   namespace: sgdecoding
 spec:
   ingressClassName: "nginx"
@@ -20,7 +20,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: sg-decoding-api-canary  # Canary service
+                name: sg-decoding-api  # Canary service
                 port:
                   number: 2000
   tls:
