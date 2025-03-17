@@ -104,10 +104,10 @@ spec:
            failureThreshold: 5
           resources: 
             limits:
-              memory: 2Gi
+              memory: 0.5Gi
             requests:
               cpu: 500m
-              memory: 2Gi
+              memory: 0.5Gi
           volumeMounts:
             []
       volumes:
