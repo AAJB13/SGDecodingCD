@@ -75,7 +75,7 @@ spec:
               name: http1
           readinessProbe:
            httpGet:
-               path: /
+               path: /health
                port: 2000
            initialDelaySeconds: 10
            periodSeconds: 10
@@ -84,7 +84,7 @@ spec:
            failureThreshold: 5
           livenessProbe:
            httpGet:
-             path: /
+             path: /health
              port: 2000
            initialDelaySeconds: 10
            periodSeconds: 10
