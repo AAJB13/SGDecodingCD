@@ -46,7 +46,7 @@ app.get("/users", async (request, response) => {
   }
 });
 
-// Health check endpoint
+// Health check endpoint 2000
 app.get('/healthz', (req, res) => {
   res.status(200).send('OK');
 });
