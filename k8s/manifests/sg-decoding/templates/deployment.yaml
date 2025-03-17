@@ -36,10 +36,8 @@ spec:
           image: "ghcr.io/aajb13/sgd-backend:173"
           imagePullPolicy: "Always"
           env:
-            - name: PORT_API
-              value: "2000"
             - name: PORT
-              value: "3000"
+              value: "2000"
             - name: PROXY_PORT
               value: "8080"
             - name: QUILLJS_PORT
