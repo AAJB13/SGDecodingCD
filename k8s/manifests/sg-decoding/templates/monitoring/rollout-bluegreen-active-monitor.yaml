@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: rollout-bluegreen-active
-  namespace: sgdecoding  # Ensure this matches the namespace of your service
+  namespace: sgdecoding  # Ensure this matches the namespace of your svc
   labels:
     app.kubernetes.io/name: sg-decoding
     app.kubernetes.io/instance: sgdecoding
