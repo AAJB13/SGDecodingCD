@@ -18,31 +18,23 @@ pipeline {
                 url: 'https://github.com/AAJB13/SGD.git'
             }
         }
+        
+        stage('Check Commit Message') {
+            steps {
+                script {
+                    // Get the latest commit message
+                    def commitMessage = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
+                    echo "Latest commit message: ${commitMessage}"
 
-        stage ('Check') {
-            when {
-                not {
-                    changeset "k8s/**" // Skip if changes are in the k8s directory
+                    // Skip the build if the commit message contains a specific keyword (e.g., [skip ci])
+                    if (commitMessage.contains('[skip ci]')) {
+                        echo "Skipping build because the commit message contains '[skip ci]'."
+                        currentBuild.result = 'NOT_BUILD' // Abort the build
+                        error("Build aborted due to commit message containing '[skip ci]'.")
+                    }
                 }
             }
         }
-        
-        // stage('Check Commit Message') {
-        //     steps {
-        //         script {
-        //             // Get the latest commit message
-        //             def commitMessage = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
-        //             echo "Latest commit message: ${commitMessage}"
-
-        //             // Skip the build if the commit message contains a specific keyword (e.g., [skip ci])
-        //             if (commitMessage.contains('[skip ci]')) {
-        //                 echo "Skipping build because the commit message contains '[skip ci]'."
-        //                 currentBuild.result = 'FAILURE' // Abort the build
-        //                 error("Build aborted due to commit message containing '[skip ci]'.")
-        //             }
-        //         }
-        //     }
-        // }
         
         stage ('Docker Version') {
             steps {
@@ -155,7 +147,7 @@ pipeline {
         stage ('Trigger Manifest Update') {
             steps {
                 echo 'Triggering Manifest Update...'
-                build job: 'SGDecodingGithubManifest', parameters: [string(name: 'DOCKERTAG', value: "${IMAGE_VERSION}")]
+                build job: 'SGDecodingManifest', parameters: [string(name: 'DOCKERTAG', value: "${IMAGE_VERSION}")]
             }
         }
     }
