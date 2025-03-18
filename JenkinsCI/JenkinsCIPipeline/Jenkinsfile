@@ -147,7 +147,7 @@ pipeline {
         stage ('Trigger Manifest Update') {
             steps {
                 echo 'Triggering Manifest Update...'
-                build job: 'SGDecodingManifest', parameters: [string(name: 'DOCKERTAG', value: "${IMAGE_VERSION}")]
+                build job: 'SGDecodingGithubManifest', parameters: [string(name: 'DOCKERTAG', value: "${IMAGE_VERSION}")]
             }
         }
     }
