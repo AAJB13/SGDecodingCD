@@ -1,9 +1,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: rollout-bluegreen-active
-  namespace: sgdecoding  # Ensure this matches the namespace of your svc
+  name: sg-decoding-frontend-monitor
+  namespace: sgdecoding
   labels:
+    release: prometheus  # Match the Prometheus release name
+    helm.sh/chart: sg-decoding-1.0.0
     app.kubernetes.io/name: sg-decoding
     app.kubernetes.io/instance: sgdecoding
     app.kubernetes.io/version: "1.0.1"
@@ -15,8 +17,8 @@ spec:
       app.kubernetes.io/instance: sgdecoding
   namespaceSelector:
     matchNames:
-      - sgdecoding  # Ensure this matches the namespace of your service
+      - sgdecoding
   endpoints:
-    - port: http  # Matches the port name in your service
-      interval: 30s  # Scrape interval
-      path: /metrics  # Default metrics endpoint, adjust if your app uses a different path
+    - port: http
+      interval: 30s
+      path: /metrics
