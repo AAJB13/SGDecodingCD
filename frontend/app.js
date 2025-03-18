@@ -14,6 +14,6 @@ app.get('/metrics', async (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
-  console.log(`App listening on http://localhost:${port}`);
+app.listen(`${process.env.PORT}`, '0.0.0.0',()=>{
+  console.log("server is listening on port " + `${process.env.PORT}`);
 });
