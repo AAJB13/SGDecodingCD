@@ -3,9 +3,12 @@ kind: Service
 metadata:
   name: jenkinsci-server
   namespace: monitoring
+  labels:
+    app: jenkinsci-server
 spec:
   type: ExternalName
   externalName: 54.242.131.12
   ports:
-  - port: 8080
+  - name: http  # Add this name
+    port: 8080
     targetPort: 8080
