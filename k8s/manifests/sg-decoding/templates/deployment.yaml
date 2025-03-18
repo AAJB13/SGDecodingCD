@@ -153,14 +153,14 @@ spec:
       component: web
       app.kubernetes.io/name: sg-decoding
       app.kubernetes.io/instance: sgdecoding
-      component: canary
+      component: bluegreen
   template:
     metadata:
       labels:
         component: web
         app.kubernetes.io/name: sg-decoding
         app.kubernetes.io/instance: sgdecoding
-        component: canary
+        component: bluegreen
     spec:
       imagePullSecrets:
         - name: github-cr
