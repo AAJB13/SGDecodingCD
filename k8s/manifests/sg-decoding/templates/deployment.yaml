@@ -38,6 +38,8 @@ spec:
         component: api
         app.kubernetes.io/name: sg-decoding
         app.kubernetes.io/instance: sgdecoding
+        app: sgdecoding
+        component: canary
     spec:
       imagePullSecrets:
         - name: github-cr
@@ -157,6 +159,8 @@ spec:
         component: web
         app.kubernetes.io/name: sg-decoding
         app.kubernetes.io/instance: sgdecoding
+        app: sgdecoding
+        component: canary
     spec:
       imagePullSecrets:
         - name: github-cr
