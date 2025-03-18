@@ -4,7 +4,12 @@ const axios = require("axios").default;
 const compression = require("compression");
 const User = require("./models/user.model");
 
+const promClient = require('prom-client');
+
 const app = express();
+
+// Enable default metrics (e.g., CPU, memory, etc.)
+promClient.collectDefaultMetrics();
 
 const corsOptions = {
   "origin": "*",
@@ -44,6 +49,12 @@ app.get("/users", async (request, response) => {
   } catch (error) {
     response.status(500).send(error);
   }
+});
+
+// Expose metrics endpoint
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', promClient.register.contentType);
+  res.end(await promClient.register.metrics());
 });
 
 // Health check endpoint 2000
