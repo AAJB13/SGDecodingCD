@@ -32,14 +32,14 @@ spec:
       component: api
       app.kubernetes.io/name: sg-decoding
       app.kubernetes.io/instance: sgdecoding
-      component: canary
+      rollouts-pod-type: canary  # Custom label for canary pods
   template:
     metadata:
       labels:
         component: api
         app.kubernetes.io/name: sg-decoding
         app.kubernetes.io/instance: sgdecoding
-        component: canary
+        rollouts-pod-type: canary  # Custom label for canary pods
     spec:
       imagePullSecrets:
         - name: github-cr
