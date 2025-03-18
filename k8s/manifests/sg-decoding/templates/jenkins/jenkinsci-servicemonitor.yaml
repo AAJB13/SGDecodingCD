@@ -4,6 +4,7 @@ metadata:
   name: jenkinsci-server
   namespace: monitoring
   labels:
+    app: argocd-metrics
     release: prometheus
 spec:
   endpoints:
