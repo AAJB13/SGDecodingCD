@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: jenkins-external
+  name: jenkinsci-server
   namespace: monitoring
   labels:
     release: prometheus
@@ -11,6 +11,6 @@ spec:
     path: /prometheus/
   selector:
     matchLabels:
-      app: jenkins-external
+      app: jenkinsci-server
   namespaceSelector:
     any: true
