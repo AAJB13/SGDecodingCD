@@ -22,6 +22,7 @@ spec:
     component: web
     app.kubernetes.io/name: sg-decoding
     app.kubernetes.io/instance: sgdecoding
+    component: bluegreen
 
 ---
 # Source: sg-decoding/templates/service.yaml
@@ -47,6 +48,7 @@ spec:
     component: web
     app.kubernetes.io/name: sg-decoding
     app.kubernetes.io/instance: sgdecoding
+    component: bluegreen
 ---
 # Source: sg-decoding/templates/service.yaml
 apiVersion: v1
