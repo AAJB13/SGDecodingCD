@@ -1,0 +1,64 @@
+pipeline {
+    agent any
+    
+    parameters {
+        string(name: 'DOCKERTAG', defaultValue: '', description: 'Docker image tag')
+    }
+    
+    stages{
+        stage ('GitHub') {
+            steps {
+                git branch: 'main', 
+                credentialsId: 'GitHub_Credential', 
+                url: 'https://github.com/AAJB13/SGD.git'
+            }
+        }
+        
+        stage ('Check DOCKERTAG') {
+            steps {
+                script {
+                    // Check if DOCKERTAG is not null and not empty
+                    if (params.DOCKERTAG?.trim()) {
+                        echo "DOCKERTAG has a value: ${params.DOCKERTAG}"
+                    } else {
+                        echo "DOCKERTAG is empty or null"
+                    }
+                }
+            }
+        }
+        stage ('Manifest Update') {
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'GitHub_Credential', passwordVariable: 'GithubPassword', usernameVariable: 'GithubUsername')]) {
+                    dir ('manifests/sg-decoding/templates') {
+                        script {
+                            echo 'Updating Manifest..'
+                            
+                            def gitLogOutput = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
+                            echo "Git log output: ${gitLogOutput}"
+                            def commitMessage = gitLogOutput
+                            
+                            sh 'git config user.name "aajb13"'
+                            sh 'git config user.email "bluefish200057.aj@gmail.com"'
+                            
+                            // Display current contents of deployment.yaml (for debugging)
+                            sh 'cat deployment.yaml'
+                            
+                            // Update the image tag in deployment.yaml with DOCKERTAG
+                            sh "sed -i 's|\"ghcr.io/aajb13/sgd-frontend:.*\"|\"ghcr.io/aajb13/sgd-frontend:${DOCKERTAG}\"|' deployment.yaml"
+                            sh "sed -i 's|\"ghcr.io/aajb13/sgd-backend:.*\"|\"ghcr.io/aajb13/sgd-backend:${DOCKERTAG}\"|' deployment.yaml"
+                        
+                                
+                            // Verify the update by displaying the updated deployment.yaml
+                            sh 'cat deployment.yaml'
+                            
+                           
+                            sh 'git add .'
+                            sh 'git commit -m "[skip ci] Done by SGDecodingManifest: ${BUILD_NUMBER}"'
+                            sh "git push https://$GitHubUsername:$GitHubPassword@github.com/AAJB13/SGD.git"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
