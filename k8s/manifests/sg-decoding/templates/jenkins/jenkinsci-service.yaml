@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jenkinsci-server
+  name: jenkinsci-service
   namespace: monitoring
   labels:
-    app: jenkinsci-server
+    app: jenkinsci-service
 spec:
   type: ExternalName
   externalName: 54.242.131.12
