@@ -4,6 +4,8 @@ const axios = require("axios").default;
 const compression = require("compression");
 const User = require("./models/user.model");
 
+const promClient = require('prom-client');
+
 const app = express();
 
 const corsOptions = {
@@ -12,6 +14,9 @@ const corsOptions = {
   "preflightContinue": false,
   "optionsSuccessStatus": 204
 };
+
+// Enable default metrics (e.g., CPU, memory, etc.)
+promClient.collectDefaultMetrics();
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -44,6 +49,11 @@ app.get("/users", async (request, response) => {
   } catch (error) {
     response.status(500).send(error);
   }
+});
+
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', promClient.register.contentType);
+  res.end(await promClient.register.metrics());
 });
 
 // Health check endpoint 2000
