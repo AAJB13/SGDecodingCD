@@ -18,6 +18,11 @@ pipeline {
                 url: 'https://github.com/AAJB13/SGD.git'
             }
         }
+
+        stage ('Check') {
+            when {
+                not {
+                    changeset "k8s/**" // Skip if changes are in the k8s directory
         
         stage('Check Commit Message') {
             steps {
