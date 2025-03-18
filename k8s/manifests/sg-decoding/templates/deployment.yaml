@@ -32,6 +32,7 @@ spec:
       component: api
       app.kubernetes.io/name: sg-decoding
       app.kubernetes.io/instance: sgdecoding
+      component: canary
   template:
     metadata:
       labels:
@@ -152,6 +153,7 @@ spec:
       component: web
       app.kubernetes.io/name: sg-decoding
       app.kubernetes.io/instance: sgdecoding
+      component: canary
   template:
     metadata:
       labels:
