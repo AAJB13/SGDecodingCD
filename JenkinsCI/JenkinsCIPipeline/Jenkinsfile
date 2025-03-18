@@ -1,13 +1,5 @@
 pipeline {
     agent any
-
-    def changes = scm.changeSets.collect { it.items }.flatten()
-    def k8sChanges = changes.any { it.path.startsWith('k8s/') }
-
-    if (k8sChanges) {
-        echo "Changes detected in the k8s directory. Skipping the entire pipeline."
-        return // Exit the pipeline without running any stages
-    }
     
     environment {
         NODEJS_HOME = tool name: '18.0.0'
