@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    when {
+        not {
+            changeset "k8s/**"
+        }
+    }
     
     environment {
         NODEJS_HOME = tool name: '18.0.0'
