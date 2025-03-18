@@ -8,7 +8,7 @@ metadata:
 spec:
   endpoints:
   - port: http
-    path: /prometheus
+    path: /prometheus/
   selector:
     matchLabels:
       app: jenkins-external
