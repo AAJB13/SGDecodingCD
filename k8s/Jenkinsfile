@@ -29,7 +29,7 @@ pipeline {
         stage ('Manifest Update') {
             steps{
                 withCredentials([usernamePassword(credentialsId: 'GitHub_Credential', passwordVariable: 'GithubPassword', usernameVariable: 'GithubUsername')]) {
-                    dir ('manifests/sg-decoding/templates') {
+                    dir ('k8s/manifests/sg-decoding/templates') {
                         script {
                             echo 'Updating Manifest..'
                             
