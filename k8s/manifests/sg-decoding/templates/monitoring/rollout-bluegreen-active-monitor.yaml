@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: rollout-bluegreen-active-monitor
+  name: rollout-bluegreen-active
   namespace: sgdecoding  # Ensure this matches the namespace of your service
   labels:
     app.kubernetes.io/name: sg-decoding
@@ -20,6 +20,3 @@ spec:
     - port: http  # Matches the port name in your service
       interval: 30s  # Scrape interval
       path: /metrics  # Default metrics endpoint, adjust if your app uses a different path
-
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
