@@ -142,7 +142,7 @@ const LoginPage: React.FC = () => {
 		<Card.Content>
 			<Container className={authModStyles.cardHeader}>
 				<Image src="/images/Main_logo.svg" alt="sg decoding logo" />
-				<Header as="h1">Welcome to SGDecoding</Header>
+				<Header as="h1">WELCOME to SGDecoding</Header>
 				<small>Sign in to continue</small>
 				<div id={authModStyles.blockDivider}></div>
 			</Container>
