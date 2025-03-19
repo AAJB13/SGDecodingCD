@@ -17,6 +17,7 @@ metadata:
     prometheus.io/scrape: "true"
 spec:
   replicas: 4
+  revisionHistoryLimit: 2
   strategy:
     canary:
       steps:
