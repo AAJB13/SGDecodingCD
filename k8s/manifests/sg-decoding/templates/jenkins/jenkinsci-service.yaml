@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jenkinsci-service
+  name: jenkins-external
   namespace: monitoring
   labels:
-    app: jenkinsci-service
+    app: jenkins-external  # Label to match the ServiceMonitor selector
 spec:
   type: ExternalName
-  externalName: 54.242.131.12
+  externalName: 54.242.131.12  # Replace with the public IP or DNS of Jenkins EC2
   ports:
-  - name: http  # Add this name
+  - name: http  # Must match the port name in the ServiceMonitor
     port: 8080
     targetPort: 8080
