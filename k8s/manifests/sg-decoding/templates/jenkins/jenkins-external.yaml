@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-external
+  namespace: monitoring  # Ensure this matches Prometheus' namespace
+  labels:
+    app: jenkins  # Used by ServiceMonitor
+spec:
+  ports:
+  - name: http-metrics
+    port: 8080  # Port exposed in-cluster
+    targetPort: 8080  # Jenkins EC2 port
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: jenkins-external
+  namespace: monitoring
+subsets:
+- addresses:
+  - ip: 172.31.28.24  # Use private IP if in same VPC
+  ports:
+  - name: http-metrics
+    port: 8080
