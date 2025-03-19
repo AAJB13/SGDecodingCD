@@ -6,13 +6,6 @@ pipeline {
     }
     
     stages{
-        stage ('GitHub') {
-            steps {
-                git branch: 'main', 
-                credentialsId: 'GitHub_Credential', 
-                url: 'https://github.com/AAJB13/SGDecodingCD.git'
-            }
-        }
         
         stage ('Check DOCKERTAG') {
             steps {
@@ -54,7 +47,7 @@ pipeline {
                            
                             sh 'git add .'
                             sh 'git commit -m "[skip ci] Done by SGDecodingManifest: ${BUILD_NUMBER}"'
-                            sh "git push https://$GitHubUsername:$GitHubPassword@github.com/AAJB13/SGDeocodingCD.git"
+                            sh "git push https://$GitHubUsername:$GitHubPassword@github.com/AAJB13/SGDecoodingCD.git"
                         }
                     }
                 }
