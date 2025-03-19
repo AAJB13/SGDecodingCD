@@ -1,18 +1,18 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: jenkins-metrics
-  namespace: monitoring
+  name: jenkins-monitor
+  namespace: monitoring  # Ensure this is the namespace where Prometheus is running
   labels:
-    app: jenkins-metrics  # Label for the ServiceMonitor
-    release: prometheus   # Must match your Prometheus Operator's selector
+    release: prometheus
 spec:
+  endpoints:
+    - port: web  # The name of the port in the Service definition
+      path: /prometheus
+      interval: 15s
+      scheme: http
+  namespaceSelector:
+    any: true
   selector:
     matchLabels:
-      app: jenkins-external  # Must match the Service labels
-  endpoints:
-  - port: http  # Must match the port name in the Service
-    path: /prometheus/  # Path where Jenkins exposes Prometheus metrics
-    interval: 5s  # Optional: Scrape interval
-  namespaceSelector:
-    any: true  # Scrape across all namespaces
+      app: jenkins
