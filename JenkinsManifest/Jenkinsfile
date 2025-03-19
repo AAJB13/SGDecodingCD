@@ -10,7 +10,7 @@ pipeline {
             steps {
                 git branch: 'main', 
                 credentialsId: 'GitHub_Credential', 
-                url: 'https://github.com/AAJB13/SGD.git'
+                url: 'https://github.com/AAJB13/SGDecodingCI.git'
             }
         }
         
@@ -54,7 +54,7 @@ pipeline {
                            
                             sh 'git add .'
                             sh 'git commit -m "[skip ci] Done by SGDecodingManifest: ${BUILD_NUMBER}"'
-                            sh "git push https://$GitHubUsername:$GitHubPassword@github.com/AAJB13/SGD.git"
+                            sh "git push https://$GitHubUsername:$GitHubPassword@github.com/AAJB13/SGDeocodingCI.git"
                         }
                     }
                 }
