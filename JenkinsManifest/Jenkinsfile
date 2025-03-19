@@ -6,6 +6,13 @@ pipeline {
     }
     
     stages{
+        stage ('GitHub') {
+            steps {
+                git branch: 'main', 
+                credentialsId: 'GitHub_Credential', 
+                url: 'https://github.com/AAJB13/SGDecodingCD.git'
+            }
+        }
         
         stage ('Check DOCKERTAG') {
             steps {
