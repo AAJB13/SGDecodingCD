@@ -12,7 +12,8 @@ spec:
       interval: 15s
       scheme: http
   namespaceSelector:
-    any: true
+    matchNames:
+      - monitoring
   selector:
     matchLabels:
       app: jenkins
