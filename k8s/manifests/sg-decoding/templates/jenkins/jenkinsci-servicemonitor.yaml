@@ -8,7 +8,7 @@ metadata:
 spec:
   endpoints:
     - port: web  # The name of the port in the Service definition
-      path: /prometheus
+      path: /prometheus/
       interval: 15s
       scheme: http
   namespaceSelector:
