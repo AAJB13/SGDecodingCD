@@ -54,7 +54,7 @@ pipeline {
                            
                             sh 'git add .'
                             sh 'git commit -m "[skip ci] Done by SGDecodingManifest: ${BUILD_NUMBER}"'
-                            sh "git push https://$GitHubUsername:$GitHubPassword@github.com/AAJB13/SGDeocodingCI.git"
+                            sh "git push https://$GitHubUsername:$GitHubPassword@github.com/AAJB13/SGDeocodingCD.git"
                         }
                     }
                 }
